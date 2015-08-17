@@ -40,7 +40,9 @@ export class XMGeneralHeader {
     this.numberOfPatterns = this._parseNumberOfPatterns(arrayBuffer);
     this.numberOfInstruments = this._parseNumberOfInstruments(arrayBuffer);
     this.frequencyTable = this._parseFrequencyTable(arrayBuffer);
-    debugger;
+    this.defaultTempo = this._parseDefaultTempo(arrayBuffer);
+    this.defaultBpm = this._parseDefaultBPM(arrayBuffer);
+    this.patternOrderTable = this._parsePatternOrderTable(arrayBuffer);
   }
 
   FrequencyTable() {
@@ -106,5 +108,18 @@ export class XMGeneralHeader {
     // 0 is Amiga and 1 is linear
     var array = new Uint8Array(ab.slice(74, 76));
     return array[0];
+  }
+
+  _parseDefaultTempo(ab) {
+    return ArrayBufferUtils.IntFromCWord(ab.slice(76, 78));
+  }
+
+  _parseDefaultBPM(ab) {
+    return ArrayBufferUtils.IntFromCWord(ab.slice(78, 80));
+  }
+
+  _parsePatternOrderTable(ab) {
+    var orderTable = new Int8Array(ab.slice(80, 336));
+    return orderTable;
   }
 }
