@@ -1,0 +1,35 @@
+{
+  "name": "libjstracker",
+  "version": "0.0.1",
+  "description": "A javascript library to play old chiptunes format",
+  "main": "player.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babelify": "^6.1.3",
+    "babel": "^5.8.21"
+  },
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "babelify": "^6.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ddrmanxbxfr/LibJsTracker.git"
+  },
+  "keywords": [
+    "chiptunes",
+    "tracker",
+    "javascript"
+  ],
+  "author": "Mathieu Rheaume",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/ddrmanxbxfr/LibJsTracker/issues"
+  },
+  "homepage": "https://github.com/ddrmanxbxfr/LibJsTracker"
+}

@@ -1,6 +1,6 @@
 /*
  *
- * This is player code mostly to test as of currently
+ * LibJsTracker is a library to play old chiptunes formats
  * Copyright (C) 2015  Mathieu Rheaume <mathieu@codingrhemes.com>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,22 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import { XMGeneralHeader } from './modules/xm/GeneralHeader';
-
-console.log("Hi World ! ");
-
-var oReq = new XMLHttpRequest();
-oReq.open("GET", "age.xm", true);
-oReq.responseType = "arraybuffer";
-
-oReq.onload = function (oEvent) {
-  var arrayBuffer = oReq.response; // Note: not oReq.responseText
-  if (arrayBuffer) {
-    var blob = oReq.response;
-    var xm_headers = new XMGeneralHeader(blob);
-    var xm_frequency = xm_headers.FrequencyTable();
-    debugger;
-  }
-};
-
-oReq.send(null);
+export class AbstractFrequency {
+  static ComputePeriod() { throw "NEEDS OVERRIDE"; }
+  static ComputeFrequency() { throw "NEEDS OVERRIDE"; }
+}

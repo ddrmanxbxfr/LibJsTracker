@@ -1,4 +1,23 @@
 /* 
+ * LibJsTracker is a library to play old chiptunes formats
+ * Copyright (C) 2015  Mathieu Rheaume <mathieu@codingrhemes.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * ------------------------------------------------------------------------------
+ * Structure formats
+ * ------------------------------------------------------------------------------
  * The string at offset 38 should read "FastTracker II" but some trackers
  * (e.g. DigiTracker) use this field for other purposes (DigiTracker stores the
  * Composer's name here). This field being trashed doesn't necessarily mean
@@ -93,11 +112,19 @@ export class XMGeneralHeader {
   }
 
   _parseNumberOfChannels(ab) {
-    return ArrayBufferUtils.IntFromCWord(ab.slice(68, 70));
+    var nbChannel = ArrayBufferUtils.IntFromCWord(ab.slice(68, 70));
+    if (nbChannel > 64)
+      throw "Invalid number of channel";
+
+    return nbChannel;
   }
 
   _parseNumberOfPatterns(ab) {
-    return ArrayBufferUtils.IntFromCWord(ab.slice(70, 72));
+    var nbPatterns = ArrayBufferUtils.IntFromCWord(ab.slice(70, 72));
+    if (nbPatterns > 256)
+      nbPatterns = 256;
+
+    return nbPatterns;
   }
 
   _parseNumberOfInstruments(ab) {
