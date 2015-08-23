@@ -17,7 +17,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import { XMGeneralHeader } from './modules/xm/GeneralHeader';
+import { XMGeneralHeader } from './modules/xm/XMGeneralHeader';
+import { XMPatterns } from './modules/xm/XMPatterns';
 
 console.log("Hi World ! ");
 
@@ -30,7 +31,7 @@ oReq.onload = function (oEvent) {
   if (arrayBuffer) {
     var blob = oReq.response;
     var xm_headers = new XMGeneralHeader(blob);
-    var xm_frequency = xm_headers.FrequencyTable();
+    var xm_patterns = new XMPatterns(xm_headers.numberOfPatterns, blob);
     debugger;
   }
 };

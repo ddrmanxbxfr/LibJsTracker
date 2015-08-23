@@ -36,5 +36,11 @@ export class ArrayBufferUtils {
       throw "DWord is 4 bytes long";
     return new Uint32Array(buf)[0];
   }
+
+  static IntFromByte(buf) {
+    if (buf.byteLength !== 1)
+      throw "C Byte is 1 byte long..";
+    return new Int8Array(buf)[0];
+  }
 }
 

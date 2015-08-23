@@ -40,10 +40,11 @@
  * +16      2   (word) Default tempo
  * +18      2   (word) Default BPM
  * +20    256   (byte) Pattern order table
+ * ------------------------------------------------------------------------------
  */
 import { ArrayBufferUtils } from './../utils/ArrayBufferUtils';
-import { AmigaFrequencyTable } from './AmigaFrequencyTable';
-import { LinearFrequencyTable } from './LinearFrequencyTable';
+import { AmigaFrequencyTable } from './frequency_table/AmigaFrequencyTable';
+import { LinearFrequencyTable } from './frequency_table/LinearFrequencyTable';
 
 export class XMGeneralHeader {
   constructor(arrayBuffer) {
